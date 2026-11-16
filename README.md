@@ -1,12 +1,12 @@
 # Adaptive Dodge — Dynamic Difficulty Adjustment
 
-**README prose word count:** 649 (excludes code blocks and setup commands).
+**README prose word count:** 795 (excludes code blocks and setup commands).
 
-**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller has eight automated tests. **Live gameplay has not yet been independently play-tested by the student.** Do not interpret this prototype as proof that DDA improves enjoyment.
+**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller includes eleven automated tests. **The initial version was play-tested by the student, who reported that it felt too easy and that speed alone did not meaningfully raise the challenge. The revised version still needs player re-testing.** Do not interpret this prototype as proof that DDA improves enjoyment.
 
 ## What works
 
-The player uses A/D or the arrow keys to dodge obstacles. Difficulty begins at level 2. Every 10 seconds of **active play**, the controller checks collisions. Two or more collisions reduce difficulty by one. Two consecutive zero-collision windows increase difficulty by one. Otherwise the level stays the same. Levels are bounded 1–5. Higher levels increase obstacle speed and spawn frequency. Switching off DDA stops automatic changes and enables a fixed difficulty selector. Every decision is explained in the interface.
+The player uses A/D or the arrow keys to dodge obstacles. Difficulty begins at level 2. Every 10 seconds of **active play**, the controller checks collisions. Two or more collisions reduce difficulty by one. Two consecutive zero-collision windows increase difficulty by one. Otherwise the level stays the same. Levels are bounded 1–5. Higher levels increase obstacle speed, spawn frequency and the number of obstacles per wave (1, 2, 3, 3, 4). Each wave occupies distinct positions among nine lanes, leaving at least five unblocked lanes. The interface explains the active parameters. Switching off DDA stops automatic changes and enables a fixed difficulty selector. Every decision is explained in the interface.
 
 ## Technology and AI
 
@@ -34,7 +34,7 @@ Requires Node.js. Run:
 npm test
 ```
 
-Eight controller tests cover difficulty increases and decreases, neutral windows, reset of consecutive success, fixed mode, level boundaries, parameter changes and invalid input. Automated tests do **not** substitute for running the game in a browser.
+Eleven controller tests cover difficulty increases and decreases, neutral windows, reset of consecutive success, fixed mode, level boundaries, parameter progression, wave density, distinct lanes and invalid input. Automated tests do **not** substitute for running the game in a browser.
 
 ## Architecture and interaction examples
 
@@ -47,14 +47,15 @@ Eight controller tests cover difficulty increases and decreases, neutral windows
 | Date/stage | Change and rationale | Evidence |
 |---|---|---|
 | 16 Nov — Foundation | Added playable Canvas loop, controls, obstacles and collision tracking. This provides observable activity from which a difficulty decision can be made. | Initial source commits |
-| 16 Nov — Adaptive logic | Separated `difficulty.js` from rendering, implemented 10-second thresholds and levels 1–5. Transparent rules make adaptation explainable and testable. | `difficulty.js`, eight tests |
+| 16 Nov — Adaptive logic | Separated `difficulty.js` from rendering, implemented 10-second thresholds and levels 1–5. Transparent rules make adaptation explainable and testable. | `difficulty.js`, eleven tests |
 | 16 Nov — Agency | Added DDA toggle, manual difficulty and status/decision feedback. Responds to literature concerns about user control and predictability. | `index.html`, `game.js` |
 | 16 Nov — Demonstration | Added labelled simulation controls and schematic interaction scenarios to demonstrate states without claiming real user evidence. | `assets/`, demo buttons |
-| **To complete — student testing** | Record direct browser observations, one genuine design revision with before/after comparison, and the associated commit. | **[ADD your observations and commit]** |
+| 16 Nov — Initial play-test and revision | The student reported that the initial game felt too easy and that increasing speed alone did not create a meaningful difficulty step. Revised obstacle speed, wave frequency and obstacles per wave at each level. Nine-lane selection prevents a single wave forming a full-width wall. Automated tests cover density and distinct lanes; effectiveness is not yet established. | `difficulty.js`, `game.js`, `tests/difficulty.test.js` |
+| **To complete — student re-test** | Test all five revised levels in the browser; note whether the new density feels meaningfully harder but fair, any problems, and final adjustments. Add the final commit SHA. | **[ADD observations and commit]** |
 
 ## Limitations and future possibilities
 
-No user study or self-reported enjoyment data, long-term player model, persistent profile, multiplayer or mobile touch controls. The numerical thresholds are initial design hypotheses. A comparative user study of fixed vs automatic difficulty and reported agency is **planned only**, not implemented.
+No user study or self-reported enjoyment data, long-term player model, persistent profile, multiplayer or mobile touch controls. The numerical thresholds and revised obstacle profiles are design hypotheses, not experimentally validated optimal settings. A comparative user study of fixed vs automatic difficulty and reported agency is **planned only**, not implemented.
 
 ## Submission identifiers
 
