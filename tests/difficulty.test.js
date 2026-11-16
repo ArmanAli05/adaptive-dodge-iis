@@ -17,7 +17,7 @@ test('every level has higher obstacle speed and more frequent waves',()=>{
  }
 });
 test('obstacle density scales from one to four per wave',()=>{
- assert.deepEqual([1,2,3,4,5].map(l=>gameParameters(l).blocksPerWave),[1,2,3,3,4]);
+ assert.deepEqual([1,2,3,4,5].map(l=>gameParameters(l).blocksPerWave),[1,2,3,4,4]);
 });
 test('one wave uses distinct lanes and leaves safe lanes',()=>{
  for(let level=1;level<=5;level++){
