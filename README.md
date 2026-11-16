@@ -1,12 +1,12 @@
 # Adaptive Dodge — Dynamic Difficulty Adjustment
 
-**README prose word count:** 795 (excludes code blocks and setup commands).
+**README prose word count:** 864 (excludes code blocks and setup commands).
 
-**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller includes eleven automated tests. **The initial version was play-tested by the student, who reported that it felt too easy and that speed alone did not meaningfully raise the challenge. The revised version still needs player re-testing.** Do not interpret this prototype as proof that DDA improves enjoyment.
+**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller includes eleven automated tests. **The student play-tested the initial and revised games: the first version felt too easy and speed alone was insufficient; after increasing obstacle density and speed, level 5 felt challenging but level 4 still felt too easy. Level 4 has been adjusted again and awaits re-testing.** Do not interpret this prototype as proof that DDA improves enjoyment.
 
 ## What works
 
-The player uses A/D or the arrow keys to dodge obstacles. Difficulty begins at level 2. Every 10 seconds of **active play**, the controller checks collisions. Two or more collisions reduce difficulty by one. Two consecutive zero-collision windows increase difficulty by one. Otherwise the level stays the same. Levels are bounded 1–5. Higher levels increase obstacle speed, spawn frequency and the number of obstacles per wave (1, 2, 3, 3, 4). Each wave occupies distinct positions among nine lanes, leaving at least five unblocked lanes. The interface explains the active parameters. Switching off DDA stops automatic changes and enables a fixed difficulty selector. Every decision is explained in the interface.
+The player uses A/D or the arrow keys to dodge obstacles. Difficulty begins at level 2. Every 10 seconds of **active play**, the controller checks collisions. Two or more collisions reduce difficulty by one. Two consecutive zero-collision windows increase difficulty by one. Otherwise the level stays the same. Levels are bounded 1–5. Higher levels increase obstacle speed, spawn frequency and the number of obstacles per wave (1, 2, 3, 4, 4). Each wave occupies distinct positions among nine lanes, leaving at least five unblocked lanes. The interface explains the active parameters. Switching off DDA stops automatic changes and enables a fixed difficulty selector. Every decision is explained in the interface.
 
 ## Technology and AI
 
@@ -51,7 +51,8 @@ Eleven controller tests cover difficulty increases and decreases, neutral window
 | 16 Nov — Agency | Added DDA toggle, manual difficulty and status/decision feedback. Responds to literature concerns about user control and predictability. | `index.html`, `game.js` |
 | 16 Nov — Demonstration | Added labelled simulation controls and schematic interaction scenarios to demonstrate states without claiming real user evidence. | `assets/`, demo buttons |
 | 16 Nov — Initial play-test and revision | The student reported that the initial game felt too easy and that increasing speed alone did not create a meaningful difficulty step. Revised obstacle speed, wave frequency and obstacles per wave at each level. Nine-lane selection prevents a single wave forming a full-width wall. Automated tests cover density and distinct lanes; effectiveness is not yet established. | `difficulty.js`, `game.js`, `tests/difficulty.test.js` |
-| **To complete — student re-test** | Test all five revised levels in the browser; note whether the new density feels meaningfully harder but fair, any problems, and final adjustments. Add the final commit SHA. | **[ADD observations and commit]** |
+| 16 Nov — Second play-test and level-4 refinement | Student retested the revised game and found level 5 challenging but level 4 still insufficiently difficult. Increased level-4 obstacles per wave from three to four, keeping speed (335 px/s), wave interval (0.77s) and level 5 unchanged. This isolates density as the changed variable; outcome awaits re-test. | `difficulty.js`, updated density test |
+| **To complete — student re-test** | Test revised level 4 against levels 3 and 5; check perceived challenge, fairness and whether adaptation remains understandable. Record results and final submitted SHA. | **[ADD observations and commit]** |
 
 ## Limitations and future possibilities
 
