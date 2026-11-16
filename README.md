@@ -1,8 +1,8 @@
 # Adaptive Dodge — Dynamic Difficulty Adjustment
 
-**README prose word count:** 864 (excludes code blocks and setup commands).
+**README prose word count:** 909 (excludes code blocks and setup commands).
 
-**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller includes eleven automated tests. **The student play-tested the initial and revised games: the first version felt too easy and speed alone was insufficient; after increasing obstacle density and speed, level 5 felt challenging but level 4 still felt too easy. Level 4 has been adjusted again and awaits re-testing.** Do not interpret this prototype as proof that DDA improves enjoyment.
+**Status — 16 November 2026:** Implemented browser-game prototype with player movement, falling obstacles, collision tracking, score, start/pause/restart, a deterministic dynamic difficulty controller, manual mode, player feedback, and labelled synthetic-input demonstration controls. The controller includes eleven automated tests. **The student play-tested the initial and revised games: the first version felt too easy and speed alone was insufficient; after increasing obstacle density and speed, level 5 felt challenging but level 4 still felt too easy. Following the final revision, the student confirmed that all five levels now feel appropriately differentiated. This is informal self-testing, not evidence that the game improves player enjoyment.** Do not interpret this prototype as proof that DDA improves enjoyment.
 
 ## What works
 
@@ -52,7 +52,8 @@ Eleven controller tests cover difficulty increases and decreases, neutral window
 | 16 Nov — Demonstration | Added labelled simulation controls and schematic interaction scenarios to demonstrate states without claiming real user evidence. | `assets/`, demo buttons |
 | 16 Nov — Initial play-test and revision | The student reported that the initial game felt too easy and that increasing speed alone did not create a meaningful difficulty step. Revised obstacle speed, wave frequency and obstacles per wave at each level. Nine-lane selection prevents a single wave forming a full-width wall. Automated tests cover density and distinct lanes; effectiveness is not yet established. | `difficulty.js`, `game.js`, `tests/difficulty.test.js` |
 | 16 Nov — Second play-test and level-4 refinement | Student retested the revised game and found level 5 challenging but level 4 still insufficiently difficult. Increased level-4 obstacles per wave from three to four, keeping speed (335 px/s), wave interval (0.77s) and level 5 unchanged. This isolates density as the changed variable; outcome awaits re-test. | `difficulty.js`, updated density test |
-| **To complete — student re-test** | Test revised level 4 against levels 3 and 5; check perceived challenge, fairness and whether adaptation remains understandable. Record results and final submitted SHA. | **[ADD observations and commit]** |
+| 16 Nov — Final gameplay check | Student re-tested the revised levels and reported that all five now felt appropriately challenging and differentiated. Gameplay features were frozen at this point. This is subjective self-assessment, not a controlled user study. | Student feedback; level-profile commits |
+| **To complete — submission** | Verify report accuracy, published website, final commit identifier and submission link. | **[ADD final submitted revision]** |
 
 ## Limitations and future possibilities
 
@@ -62,6 +63,6 @@ No user study or self-reported enjoyment data, long-term player model, persisten
 
 - Repository: https://github.com/ArmanAli05/adaptive-dodge-iis
 - README: https://github.com/ArmanAli05/adaptive-dodge-iis/blob/main/README.md
-- Published game: **[Add GitHub Pages URL after verifying deployment]**
+- Published game (checked by student during play-testing): https://armanali05.github.io/adaptive-dodge-iis/
 - Submitted revision/commit SHA: **[Add final full SHA before submission]**
 - Report: submitted separately; link it here if included in the repository.
