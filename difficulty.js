@@ -15,7 +15,7 @@ export function gameParameters(level){
   {spawnInterval:1.60,obstacleSpeed:155,blocksPerWave:1},
   {spawnInterval:1.20,obstacleSpeed:215,blocksPerWave:2},
   {spawnInterval:0.95,obstacleSpeed:275,blocksPerWave:3},
-  {spawnInterval:0.77,obstacleSpeed:335,blocksPerWave:3},
+  {spawnInterval:0.77,obstacleSpeed:335,blocksPerWave:4},
   {spawnInterval:0.62,obstacleSpeed:400,blocksPerWave:4}
  ];
  return {...profiles[level-1]};
